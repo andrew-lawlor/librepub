@@ -25,3 +25,5 @@ LibePub is free and open-source software. Want to know how it works? Look at the
 - Any reasonable feature requests users have,
 
 https://librepub.org
+
+Dictionary data sourced from: https://github.com/BoboTiG/ebook-reader-dict and converted to SQLite format.
