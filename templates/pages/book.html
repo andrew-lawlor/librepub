@@ -1,0 +1,12 @@
+{{template "fragHeader" .}}
+{{template "fragValidationMessages" .}}
+<a style="float:right;" href="/library/{{ .Data.ID }}/export"><i class='bx bxs-file-export'></i> Export to MD</a>
+<h2>{{ .Data.Title }}</h2>
+<nav aria-label="breadcrumb">
+    <ul>
+    <li><a href="/library">Library</a></li>
+    <li><a href="/library/{{ .Data.ID }}">{{ .Data.Title }}</a></li>
+    </ul>
+</nav>
+{{template "fragAnnotations" .Data}}
+{{template "fragFooter"}}

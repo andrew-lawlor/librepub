@@ -1,0 +1,35 @@
+{{template "fragHeader" .}}
+{{template "fragValidationMessages" .}}
+
+<h2>Upload Kobo Database</h2>
+<p>Use the file browser to upload your Kobo's 'KoboReader.sqlite' file.</p>
+<p>Need help finding it?</p>
+<ol>
+    <li>Plug your Kobo device into your computer.</li>
+    <li>Open your Kobo using your file manager (e.g., Windows Explorer).</li>
+    <li>Toggle the 'Show Hidden Files' option in your operating system. Here's how to do that in 
+        <a href="https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5">Windows</a> 
+        and <a href="https://www.wikihow.com/Show-Hidden-Files-and-Folders-on-a-Mac">Mac</a>. On Linux, press <kbd>CTRL + H</kbd>.</li>
+    <li>Click 'Browse' below. Find your Kobo eReader. Click into the '.kobo' folder, in which you'll find the 'KoboReader.sqlite' file. Select this file and confirm!</li>
+</ol>
+<article>
+<form enctype="multipart/form-data" action="/upload-db" method="post">
+    <fieldset>
+    <label for="koboDB">Kobo Database:
+        <input type="file" name="koboDB" id="upload-file" accept=".sqlite" hx-swap="none" required>
+    </label>
+    <label>
+        <input name="exportVocab" type="checkbox" role="switch" />
+        Export Vocab? <a href="/my-words" target="_blank">What's this?</a>
+      </label>
+    </fieldset>
+    <input type="submit" value="Upload">
+</form>
+</article>
+<h3>But What About My Privacy?</h3>
+<p>Excellent question! LibrePub simply extracts your notes, highlights and saved vocabulary. Your database file is stored temporarily, processed, and then immediately deleted.
+    You can export your data at any time in universal, plain-text formats. No lock-in here!
+</p>
+<p>Don't believe us? Read the source code for yourself and see! That's the beauty of free software.</p>
+<p>You can always pull the project and run it on localhost. It's only a single binary ;)</p>
+{{template "fragFooter"}}

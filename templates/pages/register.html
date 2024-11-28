@@ -1,0 +1,21 @@
+{{template "fragHeader" .}}
+{{template "fragValidationMessages" .}}
+<h2>Register an Account</h2>
+<form hx-post="/register-post" hx-target="body">
+    <p>
+    <label for="userName">User Name:</label>
+    <input type="text" name="userName" required minlength="1" maxlength="24">
+    </p>
+    <p>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required minlength="8" maxlength="32">
+    </p> 
+    <p>
+    <label for="displayName">Display Name:</label>
+    <input type="text" name="displayName" required minlength="1" maxlength="24">
+    </p>
+    {{template "fragCaptcha" .}}
+    {{template "fragCSRF" .}}
+    <input type="submit" name="submit" value="Register">
+    </form>
+{{template "fragFooter"}}

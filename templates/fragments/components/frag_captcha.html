@@ -1,0 +1,17 @@
+{{define "fragCaptcha"}}
+<input type="hidden" name="humanCheckID" value="{{ .Captcha.ID }}">
+<label for="humanCheck">Humanity Check: {{ .Captcha.Question }}</label>
+<input type="text" name="humanCheck" id="humanCheck" required>
+<small id="invalid-helper"></small>
+
+<script>
+    // If submission fails, show ui feedback to user.
+    document.body.addEventListener("htmx:responseError", (event) => {
+    if (event.detail.xhr.status === 400) {
+        // Show an error message to the user
+        document.getElementById("humanCheck").setAttribute("aria-invalid", "true");
+        document.getElementById("invalid-helper").innerText = event.detail.xhr.responseText;
+    }
+});
+  </script>
+{{ end }}

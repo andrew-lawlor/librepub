@@ -1,0 +1,8 @@
+{{define "fragValidationMessages"}}
+{{range $errorMsg := .ErrorMsgs}}
+<p class="error" style="text-align: center;">{{$errorMsg}}</p>
+{{ end }}
+{{ if .SuccessMsg }}
+<p class="success" style="text-align: center;">{{.SuccessMsg}}</p>
+{{ end }}
+{{ end }}

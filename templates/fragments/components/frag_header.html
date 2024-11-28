@@ -1,0 +1,52 @@
+{{define "fragHeader"}}
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="{{ .PageDescription }}" />
+        <title>{{ .PageTitle }} | LibrePub</title>
+        <script src="https://unpkg.com/htmx.org@2.0.2" defer></script>
+        <script src="/js/librepub.js" defer></script>
+        <link rel="stylesheet" href="/css/pico.cyan.css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.ico"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.ico"
+        />
+    </head>
+    <body>
+        <header class="container">
+            <nav>
+                <ul>
+                    <li><a href="/" style="border-style: none;" class='{{if eq .PageTitle "Home"}}contrast{{ end }}'><img src="/images/cc-mascot.webp" alt="Community Compute Mascot"
+                        style="height: 72px; width: 80px; vertical-align:middle;"/><strong>LibrePub</strong></a></li>
+                </ul>
+                <ul>
+                    {{ if not .LoggedIn }}
+                    {{ if .RegistrationEnabled }}
+                    <li><a href="/register" class='{{if eq .PageTitle "Register"}}contrast{{ end }}'>Register</a></li>
+                    <li><a href="/login" class='{{if eq .PageTitle "Login"}}contrast{{ end }}'>Login</a></li>
+                    {{ end }}
+                    {{ end }} {{ if .LoggedIn }}
+                    <li><a href="/upload-db" class='{{if eq .PageTitle "Upload"}}contrast{{ end }}'>Upload</a></li>
+                    <li><a href="/library" class='{{if eq .PageTitle "Library"}}contrast{{ end }}'>Library</a></li>
+                    <li><a href="/vocab" class='{{if eq .PageTitle "Vocab"}}contrast{{ end }}'>Vocab</a></li>
+                    <li><a href="/logout">Logout ({{ .UserDisplayName }})</a></li>
+                    {{ end }}
+                  </ul>
+            </nav>
+        </header>
+        <main class="container">{{end}}

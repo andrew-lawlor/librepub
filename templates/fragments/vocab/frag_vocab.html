@@ -1,0 +1,38 @@
+{{define "fragVocab"}} {{ if eq .PageNumber 1 }}
+<thead>
+    <tr>
+        <th>Word</th>
+        <th>Definition</th>
+        <th>Created</th>
+        <th>Action</th>
+    </tr>
+</thead>
+{{ end }} {{range $vocab := .Data}}
+<tr>
+    <td>{{ $vocab.Word }}</td>
+    <td>{{ $vocab.ContentHTML }}</td>
+    <td>{{ $vocab.Created }}</td>
+    <td>
+        <button
+            class="contrast"
+            hx-delete="/vocab/{{ $vocab.ID }}/delete"
+            hx-target="closest tr"
+            hx-swap="outerHTML swap:1s"
+            hx-confirm="Are you sure?"
+        >
+            Delete
+        </button>
+    </td>
+</tr>
+{{end}}
+<tr hx-target="this">
+    <td colspan="4" class="centered-text">
+        <button
+            hx-get="/vocab?page={{ .PageNumber }}&partial=1&search={{ .SearchParm }}"
+            hx-swap="outerHTML"
+        >
+            Load More
+        </button>
+    </td>
+</tr>
+{{end}}

@@ -1,0 +1,24 @@
+{{template "fragHeader" .}}
+{{template "fragValidationMessages" .}}
+<a style="float:right;" href="/export-all"><i class='bx bxs-file-export'></i> Export to MD</a>
+<h2>Library</h2>
+<form>
+    <fieldset>
+    <label for="search">Search:</label>
+    <input
+        type="search"
+        name="search"
+        placeholder="Search books"
+        aria-placeholder="Search books"
+        hx-get="/library"
+        hx-swap="innerHTML"
+        hx-target="#search-results"
+        hx-trigger="input changed delay:500ms, search"
+        hx-vals='{"page": "0", "partial": "1"}'
+        hx-indicator=".htmx-indicator"
+    />
+    <small class="htmx-indicator"><i class="bx bx-loader bx-spin"></i> Loading...</small>
+    </fieldset>
+</form>
+<div id="search-results">{{template "fragBooks" .}}</div>
+{{template "fragFooter"}}

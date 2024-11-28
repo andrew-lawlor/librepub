@@ -1,0 +1,16 @@
+{{template "fragHeader" .}}
+{{template "fragValidationMessages" .}}
+<form action="/login-post" method="post">
+<h2>Login to your account</h2>
+<p>
+<label for="userName">User Name:</label>
+<input type="text" name="userName" required maxlength="24" pattern="[a-zA-Z0-9.\-]*" title="Letters [a-z], numbers [0-9], and the following special characters '-', '.'">
+</p>
+<p>
+<label for="password">Password:</label>
+<input type="password" name="password" required maxlength="24">
+</p>
+{{template "fragCSRF" .}}
+<input type="submit" name="submit" value="Login">
+</form>
+{{template "fragFooter"}}

@@ -1,0 +1,28 @@
+{{template "fragHeader" .}}
+<a style="float:right;" href="/export-vocab"><i class='bx bxs-file-export'></i> Export to TSV</a>
+<h1>Vocab</h1>
+{{template "fragValidationMessages" .}}
+<form>
+    <fieldset>
+        <label for="search">Search:</label>
+        <input
+            type="search"
+            name="search"
+            placeholder="Search vocab"
+            aria-placeholder="Search vocab"
+            hx-get="/vocab"
+            hx-swap="innerHTML"
+            hx-target="#search-results"
+            hx-trigger="input changed delay:500ms, search"
+            hx-vals='{"page": "0", "partial": "1"}'
+            hx-indicator=".htmx-indicator"
+        />
+        <small class="htmx-indicator"
+            ><i class="bx bx-loader bx-spin"></i> Loading...</small
+        >
+    </fieldset>
+</form>
+<table id="search-results">
+    {{template "fragVocab" .}}
+</table>
+{{template "fragFooter"}}

@@ -1,0 +1,24 @@
+{{define "fragBooks"}}
+{{range $book := .Data}}
+<article id="book-{{ $book.ID }}">
+    <header>
+            <a href="/library/{{ $book.ID }}">
+                <h3 class="nomargin-bottom">
+                    {{ $book.Title }}
+                </h3></a>
+    </header>
+    <details>
+        <summary>{{ len $book.Annotations }} Annotations</summary>
+        {{template "fragAnnotations" .}}
+      </details>
+    
+</article>
+{{end}}
+<div class="centered-text" hx-target="this">
+    <button
+    hx-get="/library?page={{ .PageNumber }}&partial=1&search={{ .SearchParm }}"
+    hx-swap="outerHTML">
+    Load More
+</button>
+</div>
+{{ end }}

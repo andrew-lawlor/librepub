@@ -1,0 +1,19 @@
+{{define "fragAnnotations"}}
+    {{range $annotation := .Annotations}}
+    <article>
+        <header>
+            {{ if eq $annotation.AnnotationType "note" }}
+            <strong><i class='bx bxs-note'></i> Note</strong>
+            {{ else }}
+            <strong><i class='bx bx-highlight' ></i> Highlight</strong>
+            {{ end }}
+            <small>{{ $annotation.Created }}</small>
+        </header>
+        <blockquote>{{ $annotation.Text }}</blockquote>
+        {{ if $annotation.Note }}
+        <hr>
+        {{ $annotation.Note }}
+        {{ end }}
+    </article>
+    {{ end }}
+{{ end }}
